@@ -4,14 +4,14 @@
     ViewBag.Title = "GridFactor";
 }
 
-    <h3 class="pt-5 pb-2 text-center text-bg-primary">Student Records</h3>
-    <h6 class="text-bg-danger"> @ViewBag.Message</h6>
-    <div class="pb-4 pt-3 text-end">
-        @using (@Html.BeginForm())
-        {
-            @Html.TextBox("searchName") <input type="submit" value="Search" class="text-bg-primary"/>
-        }
-    </div>
+<h3 class="pt-5 pb-2 text-center text-bg-primary">Student Records</h3>
+<h6 class="text-bg-danger"> @ViewBag.Message</h6>
+<div class="pb-4 pt-3 text-end">
+    @using (@Html.BeginForm())
+    {
+        @Html.TextBox("searchName") <input type="submit" value="Search" class="text-bg-primary" />
+    }
+</div>
 
 @(Html
         .Grid(Model)
@@ -35,3 +35,5 @@
     )
         .Css("table table-striped table-hover table-info table-responsive")
 )
+
+@Html.ActionLink("Get List", "ListOfRecord", "Home", null, new { @class = "btn btn-primary" })
