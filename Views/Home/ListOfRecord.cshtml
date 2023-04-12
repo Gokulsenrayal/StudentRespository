@@ -1,0 +1,42 @@
+﻿@model IEnumerable<LinqStoringData.ViewModel.TotalCalculation>
+
+@{
+    ViewBag.Title = "ListOfRecord";
+}
+<div class="pb-3 pt-3">
+    <h3>List of Student Name,Subject Name and Subject Marks</h3>
+</div>
+<h6 class="text-bg-danger"> @ViewBag.Message</h6>
+
+<table class="table table-bordered table-success pt-3">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marks)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marks)
+            </td>
+
+        </tr>
+    }
+
+</table>
+<div>@Html.ActionLink("Total Marks", "TotalMarks", "Home", null, new { @class = "btn btn-primary" })</div>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<LinqStoringData.ViewModel.TotalCalculation>
+
+@{
+    ViewBag.Title = "HighScorer";
+}
+
+<h2 class="pt-5 pb-2">High Scorer</h2>
+<h6 class="text-bg-danger">@ViewBag.Message</h6>
+
+<table class="table table-striped ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Marks)
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+
+        <tr>
+
+            
+            <td>
+            @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubjectName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marks)
+            </td>
+        </tr>
+    }
+
+</table>
+@*@foreach(var subject in Model)
+    {
+     <h2>@subject.SubjectName</h2>
+     <p>High Scorer :@subject.Marks</p>
+     <p>Student Names</p>
+     <ul>
+         @foreach (var student in subject.Students)
+         {
+
+             <li>@student</li>
+
+         }
+     </ul>
+    }*@
+
+@*@if (item.Students.Any())
+{
+    <span>@item.Students.First()</span>
+    for (int i = 1; i < item.Students.Count(); i++)
+    {
+        <br />
+        <span>@item.Students[i]</span>
+
+    }
+}*@
+@Html.ActionLink("Lowest Scorer", "LowScorer", "Home", null, new { @class = "btn btn-primary" })
+
+

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<LinqStoringData.ViewModel.TotalCalculation>
+
+@{
+    ViewBag.Title = "GridFactor";
+}
+
+    <h3 class="pt-5 pb-2 text-center text-bg-primary">Student Records</h3>
+    <h6 class="text-bg-danger"> @ViewBag.Message</h6>
+    <div class="pb-4 pt-3 text-end">
+        @using (@Html.BeginForm())
+        {
+            @Html.TextBox("searchName") <input type="submit" value="Search" class="text-bg-primary"/>
+        }
+    </div>
+
+@(Html
+        .Grid(Model)
+        .Build(columns =>
+        {
+            columns.Add().RenderedAs((model, row) => row + 1).Titled("Sl.No").Css("text-center");
+            columns.Add(model => model.Name).Titled("Name");
+            columns.Add(model => model.SubjectName).Titled("Subject Name");
+            columns.Add(model => model.Marks).Titled("Marks Scored");
+        })
+        .Empty("No Data Found")
+        .Filterable()
+        .Pageable(pager =>
+        {
+            pager.PageSizes = new Dictionary<Int32, String> { { 0, "All" },{2,"2" },{ 4, "4" }};
+            pager.ShowPageSizes = true;
+            pager.PagesToDisplay = 2;
+            pager.CurrentPage = 1;
+            pager.RowsPerPage = 4;
+        }
+    )
+        .Css("table table-striped table-hover table-info table-responsive")
+)

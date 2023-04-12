@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet" />
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+   
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("Styles", required: false)
+
+    @RenderSection("Scritps", required: false)
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    
+    <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+    <script>
+        document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+    </script>
+</body>
+</html>
